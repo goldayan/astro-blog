@@ -29,6 +29,10 @@ h1 {
         padding: 0;
         width: 100%;
     }
+    
+    body {
+        padding-bottom: 2.5rem;
+    }
 }
 
 /* Markdown Affecting Css */
