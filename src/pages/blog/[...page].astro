@@ -1,0 +1,43 @@
+---
+    // Component imports and setup JavaScript go here!
+    import BaseLayout from '../../layouts/BaseLayout.astro'
+    import Paginator from '../../components/Paginator.astro'
+    import ArticleCard from '../../components/ArticleCard.astro';
+
+    export async function getStaticPaths({ rss, paginate }) {
+        const pagesize = 10;
+        // search the current and all subdirectory for markdown files
+        const allPosts = await Astro.glob('./**/*.md');
+        const sortedPosts = allPosts.sort((a, b) => new Date(b.frontmatter.date).valueOf() - new Date(a.frontmatter.date).valueOf())
+            .filter((post) => (post.frontmatter.draft == undefined));
+        rss({
+            title: 'GoldAyan’s Blog',
+            stylesheet: true,
+            description: 'An example blog on Astro',
+            customData: `<language>en-us</language>`,
+            items: sortedPosts.map(item => ({
+                title: item.frontmatter.title,
+                description: item.frontmatter.description,
+                link: item.url,
+                pubDate: item.frontmatter.date,
+            })),
+            dest: '/blog/rss.xml',
+        });
+        return paginate(sortedPosts, { pageSize: pagesize });
+    }
+
+    const title = "Blog Article List"
+    const { page } = Astro.props;
+---
+
+<BaseLayout title={title}>
+    <main>
+        <h1>{title}</h1>
+        <div class="cardlist">
+            {page.data.map((post) => (
+            <ArticleCard post={post} />
+            ))}
+        </div>
+        <Paginator page={page} />
+    </main>
+</BaseLayout>

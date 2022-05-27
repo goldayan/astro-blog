@@ -1,0 +1,141 @@
+---
+	import SocialPresence from '../components/SocialPresence.astro';
+	import SpecialButton from '../components/SpecialButton.astro';
+	import Layout from '../layouts/BaseLayout.astro';
+	const title = "Welcome to Astro.";
+---
+
+<Layout title={title}>
+	<main>
+		<div class="container">
+			<div class="left">
+				<div class="profile-container">
+					<img src="/image/profile_image.png" alt="profile-image">
+					<div class="social-media-container">
+						<SocialPresence />
+					</div>
+				</div>
+			</div>
+			<div class="right">
+				<h2 class="me-h1">
+					Hi I'm <b class="my-name">Gold Ayan</b>.
+					<br>
+					Software Engineer
+				</h2>
+				<p class="tidbits">
+					I explore everything related to TECH
+				</p>
+				<ul>
+					<li>Programming</li>
+					<li>Block Chain</li>
+					<li>AI</li>
+					<li>Cyber Security</li>
+					<li>Electronics</li>
+					<li>....</li>
+				</ul>
+				<div class="button-container">
+					<SpecialButton class="button-item" name="About Me" url="/about" />
+					<SpecialButton class="button-item" name="Blogs" url="/blog" />
+				</div>
+			</div>
+		</div>
+	</main>
+</Layout>
+
+
+<style>
+	body,
+	main {
+		height: 100vh;
+	}
+
+	.container {
+		display: grid;
+		height: 80%;
+		grid-template-columns: 1.2fr 1fr;
+		align-items: center;
+		gap: 50px;
+		grid-template-areas: "left right"
+	}
+
+	.left {
+		grid-area: left;
+	}
+
+	.right {
+		grid-area: right;
+	}
+
+	.button-container {
+		margin-top: 50px;
+		display: flex;
+		justify-content: space-evenly;
+	}
+
+	.social-media-container {
+		margin-top: 50px;
+		/*display: flex;*/
+	}
+
+
+	.profile-container {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	/*.social-media-item:not(:last-child) {*/
+	/*margin-left: 10px;*/
+	/*}*/
+
+	.my-name {
+		color: var(--theme-color-one);
+	}
+
+	.me-h1 {
+		font-size: 3rem;
+		font-weight: 900;
+		margin-bottom: 1rem;
+	}
+
+	.tidbits {
+		font-size: 1.5rem;
+		font-weight: 700;
+		margin-bottom: 2rem;
+		opacity: 0.6;
+	}
+
+	img {
+		width: 300px;
+		height: 300px;
+	}
+
+	li::marker {
+		content: "\2605  ";
+		color: var(--theme-color-two);
+	}
+
+	/* Change the button to column orientation when screen shrinks */
+	@media only screen and (max-width: 950px) {
+
+		.button-container {
+			flex-direction: column;
+			align-items: center;
+		}
+
+		.button-item {
+			width: 55%;
+			margin-bottom: 20px;
+		}
+	}
+
+	@media only screen and (max-width: 600px) {
+
+		.container {
+			grid-template-areas: "left""right";
+			grid-template-columns: 1fr;
+			gap: 0;
+			padding-bottom: 500px;
+		}
+	}
+</style>

@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700&display=swap');
+
+:root {
+    font-size: 18px;
+    font-family: 'Source Sans Pro', sans-serif;
+
+    /* theme platte */
+    --theme-color-one: #cb0033; /* Vivid Crimson */
+    --theme-color-two: #db143c; /* Crimson */
+    --theme-color-three: #ed465a; /* Desire */
+    --theme-color-four: #edb970; /* Middle yello red */
+    --theme-color-five: #e4a241; /* Meat brown */
+}
+
+
+main {
+    margin-left: 8rem;
+    padding: 1rem;
+    width: 80%;
+}
+
+h1 {
+    color: var(--theme-color-three);
+}
+
+@media only screen and (max-width: 600px) {
+    main {
+        margin: 0px;
+        padding: 0;
+        width: 100%;
+    }
+}
+
+/* Markdown Affecting Css */
+article ul li {
+    list-style: none;
+}
+
+article ul li::before {
+    content: "\29BF";
+    padding-right: 5px;
+    color: var(--theme-color-five);
+}
+
+article h1 {
+   color: var(--theme-color-one);
+   font-weight: bold;
+}
+
+article h2, h3, h4, h5, h6 {
+    color: var(--theme-color-two);
+}
+
+article blockquote {
+    width:70%;
+    font-family:Open Sans, sans-serif;
+    font-style:italic;
+    color: #555555;
+    padding:1.2em 30px 1.2em 75px;
+    border-left: 8px solid var(--theme-color-five);
+    background:#EDEDED;
+}
+
+article img {
+    width: 100%;
+    border: 1px solid var(--theme-color-four);
+    border-radius: 15px;
+}
+
+pre[class="astro-code"] {
+    padding: 20px;
+    border-radius: 15px;
+}
+
+article strong, article em {
+    color: var(--theme-color-three);
+}
+
+article a {
+    color: var(--theme-color-three);
+    /* text-decoration: none; */
+}

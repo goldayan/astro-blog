@@ -1,0 +1,55 @@
+---
+    // Component imports and setup JavaScript go here!
+    import BaseLayout from '../../layouts/BaseLayout.astro'
+    import { generateCategoryData } from '../../utils/slugHelper.js'
+    const allPosts = await Astro.glob('../blog/**/*.md');
+    const allCategoriesUnique = new Set();
+    allPosts.forEach(post => {
+        post.frontmatter.tags && post.frontmatter.tags.map(tags => {
+            allCategoriesUnique.add(tags);
+        })
+    })
+    // console.log(allCategoriesUnique);
+    const allCategoriesData = generateCategoryData(allCategoriesUnique);
+    // console.log(allCategoriesData);
+    const title = "Blog Tags"
+---
+
+<BaseLayout title={title}>
+    <main>
+        <h1>{title}</h1>
+        <ul class="list-container">
+            {allCategoriesData.map(tags => (
+            <li><a href={`/tags/${tags.slug}`}>{tags.name}</a></li>
+            ))}
+        </ul>
+    </main>
+</BaseLayout>
+
+<style>
+    .list-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media only screen and (max-width: 800px) {
+
+        .list-container {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    ul li {
+        list-style: none;
+    }
+
+    a {
+        color: var(--theme-color-three);
+    }
+
+    ul li::before {
+        content: "\29BF";
+        padding-right: 5px;
+        color: var(--theme-color-five);
+    }
+</style>

@@ -1,0 +1,56 @@
+---
+    const { post } = Astro.props;
+---
+
+<div class="card">
+    <div class="card-top">
+        <a class="header" href={post.url}>{post.frontmatter.title}</a>
+    </div>
+    <p class="content">{post.frontmatter.description}</p>
+</div>
+
+<style>
+    .card {
+        width: 80%;
+        margin: 2em auto;
+        border-radius: 0.313em;
+        box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.5);
+        color: #292929;
+        display: flex;
+        flex-direction: column;
+
+        max-width: 960px;
+        min-height: 3.750em;
+        line-height: 1.5em;
+    }
+
+    .card-top {
+        padding: 10px;
+        border-bottom: 2px solid var(--theme-color-five);
+    }
+
+    .header {
+        color: var(--theme-color-one);
+        font-size: x-large;
+        font-weight: bold;
+        text-decoration: none;
+        padding-left: 10px;
+    }
+
+    .header:hover {
+        color: var(--theme-color-four)
+    }
+
+    .content {
+        padding-left: 25px;
+        opacity: 65%;
+        font-size: large;
+    }
+
+
+    @media only screen and (max-width: 600px) {
+        card {
+            width: 100%;
+        }
+    }
+</style>

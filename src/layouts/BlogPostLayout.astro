@@ -1,0 +1,68 @@
+---
+  import BaseHead from "../components/BaseHead.astro";
+  import SideBar from "../components/SideBar.astro";
+
+  const { content } = Astro.props;
+  const formatted_date = new Date(content.date).toDateString();
+  const tags_link = content.tags.map(tag => { var json = {}; json["tag"] = tag; json["url"] = `/tags/${tag}`; return json; });
+---
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <BaseHead title={content.title} />
+</head>
+
+<body>
+  <SideBar />
+  <main>
+    <article>
+      <h1>{content.title}</h1>
+      <div class="metadata-flexbox">
+        <div><i class="fa-solid fa-calendar"></i> {formatted_date}</div>
+        <div>
+          <i class="fa-solid fa-filter"></i>
+          <a class="category-item" href="/category/${content.category.toLowerCase()}">{content.category}</a>
+        </div>
+      </div>
+      <br>
+      <div class="tag">
+        {tags_link.map(tag => <a class="tag-item" href={tag["url"]}>{tag["tag"]}</a>)}
+      </div>
+      <br>
+      <slot />
+    </article>
+  </main>
+</body>
+
+</html>
+
+<style>
+  .metadata-flexbox {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .tag,
+  .metadata-flexbox {
+    margin: 0 10px;
+  }
+
+  .tag-item {
+    background: var(--theme-color-five);
+    color: white;
+    padding: 3px 10px;
+    border-radius: 10px;
+    text-decoration: none;
+  }
+
+  .tag-item:not(:last-child) {
+    margin-right: 12px;
+  }
+
+  .category-item {
+    font-weight: bold;
+    text-decoration: none;
+  }
+</style>

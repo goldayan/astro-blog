@@ -1,0 +1,46 @@
+---
+    // Component imports and setup JavaScript go here!
+    import BaseLayout from '../../layouts/BaseLayout.astro';
+    import BlogArticleCard from '../../components/ArticleCard.astro';
+    import { generateCategoryData } from '../../utils/slugHelper.js';
+
+    export async function getStaticPaths() {
+        const allPosts = await Astro.glob('../blog/**/*.md');
+        const sortedPosts = allPosts.sort((a, b) => new Date(b.frontmatter.date).valueOf() - new Date(a.frontmatter.date).valueOf());
+
+        // Get all unique tags
+        const allCategoriesUnique = new Set();
+        sortedPosts.forEach(post => {
+            post.frontmatter.tags && post.frontmatter.tags.map(category => {
+                allCategoriesUnique.add(category);
+            })
+        })
+        const allCategoriesData = generateCategoryData(allCategoriesUnique);
+
+        // map through the tags array
+        return allCategoriesData.map((category) => {
+            // filter the posts that match the given category
+            const posts = sortedPosts.filter((post) => post.frontmatter.tags.includes(category.name))
+            return {
+                params: { slug: category.slug },
+                props: {
+                    category: category.name,
+                    posts: posts
+                }
+            };
+        });
+    }
+    const { category, posts } = Astro.props;
+    const title = `Blog Posts Tagged with ${category}`
+    console.log(title);
+---
+
+<BaseLayout title={title}>
+    <main>
+        <h1>{title}</h1>
+
+        {posts.map(post => (
+        <BlogArticleCard post={post} />
+        ))}
+    </main>
+</BaseLayout>

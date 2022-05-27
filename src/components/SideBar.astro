@@ -1,0 +1,163 @@
+---
+    import '../styles/global.css';
+---
+
+<aside>
+    <nav>
+        <ul>
+            <li>
+                <a href="/">
+                    <i class="fa-solid fa-house"></i>
+                    <p>Home</p>
+                </a>
+            </li>
+            <li>
+                <a href="/blog">
+                    <i class="fa-solid fa-newspaper"></i>
+                    <p>Blog</p>
+                </a>
+            </li>
+            <li>
+                <a href="/about">
+                    <i class="fa-solid fa-user-tie"></i>
+                    <p>About Me</p>
+                </a>
+            </li>
+            <li>
+                <a href="/tags">
+                    <i class="fa-solid fa-tags"></i>
+                    <p>Tags</p>
+                </a>
+            </li>
+            <li>
+                <a href="/category">
+                    <i class="fa-solid fa-folder-tree"></i>
+                    <p>Category</p>
+                </a>
+            </li>
+            <li>
+                <a href="/blog/rss.xml">
+                    <i class="fa-solid fa-rss"></i>
+                    <p>RSS</p>
+                </a>
+            </li>
+            <!--<li>
+                <a href="#">
+                    <i class="fa-solid fa-brush"></i>
+                    <p>Theme</p>
+                </a>
+            </li>-->
+        </ul>
+    </nav>
+</aside>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    aside {
+        height: 100vh;
+        width: 60px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background-color: #16191e;
+        overflow: hidden;
+        transition: width 0.2s;
+    }
+
+    aside:hover {
+        width: 160px;
+        overflow: visible;
+    }
+
+    nav {
+        height: 100vh;
+    }
+
+    ul {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        /*justify-content: space-around;*/
+    }
+
+    /*li:last-child {*/
+    /*margin-top: auto;*/
+    /*}*/
+
+    li:not(:last-child) {
+        margin-bottom: 20px;
+    }
+
+    li a {
+        width: 160px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        text-decoration: none;
+        padding: 10px 0;
+        color: white;
+    }
+
+    li a:hover {
+        color: var(--theme-color-four);
+    }
+
+    i.fas {
+        font-size: 20px;
+        text-align: right;
+    }
+
+    li p {
+        width: 75px;
+        font-size: 16px;
+        text-align: left;
+        letter-spacing: 0.3px;
+    }
+
+    @media only screen and (max-width: 600px) {
+
+        aside {
+            width: 100%;
+            top: initial;
+            bottom: 0;
+            height: 2.5rem;
+            overflow: scroll;
+            z-index: 999;
+        }
+
+        nav {
+            height: initial;
+            widows: 100vw;
+        }
+
+        aside:hover {
+            width: 100%;
+            overflow: scroll;
+        }
+
+        li a {
+            width: 50px;
+        }
+
+        a p {
+            display: none;
+        }
+
+        ul {
+            flex-direction: row;
+            justify-content: space-evenly;
+        }
+
+        li:not(:last-child) {
+            margin-bottom: 0px;
+        }
+
+        /*li:last-child {*/
+        /*display: none;*/
+        /*}*/
+    }
+</style>
