@@ -1,7 +1,7 @@
 ---
 setup: |
   import Layout from '../../../layouts/BlogPostLayout.astro';
-title: June Tech Dump
+title: May Tech Dump
 description: Tech tools i found interesting
 date: 2021-05-15
 author: "Gold Ayan"

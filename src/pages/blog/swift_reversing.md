@@ -5,6 +5,7 @@ title: Reverse Engineering swift binaries
 description: swift binary disection
 date: 2021-07-31
 author: "Gold Ayan"
+draft: true
 category: "Coding"
 tags:
   - swift
