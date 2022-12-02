@@ -2,7 +2,7 @@
 setup: |
   import Layout from '../../layouts/BlogPostLayout.astro';
 title: AOC2022 Day1
-description: Advent of code 2022, Day 1: Calorie Counting
+description: Advent of code 2022, Day 1-Calorie Counting
 date: 2022-12-02
 author: "Gold Ayan"
 category: "Coding"
