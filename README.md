@@ -41,10 +41,3 @@ All commands are run from the root of the project, from a terminal:
 
 Feel free to check [our documentation](https://github.com/withastro/astro) or jump into our [Discord server](https://astro.build/chat).
 
-## TODO
-
-- [x] CTF category is not showing in category list.
-- [x] Confirm the changes in about me page.
-- [x] Work on RSS Feed.
-- [x] Work on tags and category page.
-- [ ] Date and Category formatting in blog article
