@@ -17,14 +17,14 @@ First i tried the Emacs available in Fdroid but faced the following issue in it.
 - Not able to install any third party software (because of gnuTLS issue)
 - Able to integrate with other command line tools like rg (ripgrep), pass and other.
 
-So i was looking for another way to make it possible, i found the *SourceForge - Android ports for GNU Emacs* where we can download both termux and emacs. Check the resource section for the links. Let's see how i installed 
+So i was looking for another way to make it possible, i found the *SourceForge - Android ports for GNU Emacs* where we can download both termux and emacs.
 
 ### Installation
 - First if you have installed Termux and emacs you need to remove it.
 - WAIT... before removing Termux, clear App data and Cache. This is important
 - If you fail to do above step Termux installation will fail.
-- Download the Termux from the sourceforge website named **.
-- Then install the Termux.
+- Download the Termux from the sourceforge website `https://sourceforge.net/projects/android-ports-for-gnu-emacs/files/`.
+- Then install the Termux provided in the sourceforge repo.
 - Once that is done, you can download the Emacs based on your architecture.
 
 ### What next?
@@ -41,13 +41,13 @@ So i was looking for another way to make it possible, i found the *SourceForge -
 				  (getenv "LD_LIBRARY_PATH")))
 (push "/data/data/com.termux/files/usr/bin" exec-path)
 ```
-- Above code worked, i was able to run rg from the eshell.
+- Above code worked, i was able to run `rg` from the eshell.
 
 ### What's Missing? (For me atleast)
 - Don't know how to change the font.
 - I love doom mode line, icons are not loaded.
-- I tried installing the nerd font but still no clue where to put it.
-- Also the Termux sibling apps are not working like - Termux Styling, Termux widget, Termux API and other...
+- I tried installing the nerd font using `nerd-icons-install-font` but still no clue where to put it.
+- Also the Termux sibling apps are not able to install from Fdroid like - Termux Styling, Termux widget, Termux API and other...
 
 ### Thanks to,
 - Po Lu, read more on https://lwn.net/Articles/936576/
